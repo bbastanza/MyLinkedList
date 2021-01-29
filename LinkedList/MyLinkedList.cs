@@ -12,7 +12,7 @@ namespace LinkedList
         public void ReadList()
         {
             if (IsEmpty())
-                throw new InvalidOperationException("List is empty");
+                Console.WriteLine("empty");
 
             var currentNode = _head;
             
