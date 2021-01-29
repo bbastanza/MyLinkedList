@@ -41,6 +41,9 @@ namespace LinkedList
             list.Reverse();
             list.ReadList();
             
+            Console.WriteLine("*******kth node*******");
+            Console.WriteLine(list.GetKthNodeFromEnd(4));
+            
         }
     }
 }

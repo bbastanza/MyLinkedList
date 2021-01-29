@@ -184,5 +184,32 @@ namespace LinkedList
             _tail.Next = null;
             _head = previous;
         }
+
+        public int GetKthNodeFromEnd(int k)
+        {
+            if (IsEmpty())
+                throw new InvalidOperationException("List is empty");
+            
+            if (k < 1 || k > _size)
+                throw new ArgumentOutOfRangeException(nameof(k), "cannot be less than 1 & <= size of list");
+            
+            var current = _head;
+            var second = _head;
+            var count = 0;
+            while (count < k - 1)
+            {
+                second = second.Next;
+                count++;
+            }
+
+            while (second.Next != null)
+            {
+                current = current.Next;
+                second = second.Next;
+            }
+
+            return current.Value;
+
+        }
     }
 }
