@@ -18,7 +18,7 @@ namespace LinkedList
             
             Console.WriteLine("******invalid indexof*******");
             Console.WriteLine(list.IndexOf(11));
-
+            
             Console.WriteLine("******valid contains*******");
             Console.WriteLine(list.Contains(20));
             
@@ -31,11 +31,16 @@ namespace LinkedList
             Console.WriteLine("*******read*******");
             
             list.ReadList();
-
+            
             Console.WriteLine("*******read as list*******");
             var generic = list.ToGenericList();
             foreach (var item in generic)
                 Console.WriteLine(item);
+            
+            Console.WriteLine("*******reverse*******");
+            list.Reverse();
+            list.ReadList();
+            
         }
     }
 }

@@ -15,14 +15,14 @@ namespace LinkedList
                 Console.WriteLine("empty");
 
             var currentNode = _head;
-            
+
             while (true)
             {
                 Console.WriteLine(currentNode.Value);
-                
+
                 if (currentNode.Next == null)
                     return;
-                
+
                 currentNode = currentNode.Next;
             }
         }
@@ -78,20 +78,20 @@ namespace LinkedList
             var newNode = new Node(value);
             if (IsEmpty())
             {
-                _head = _tail =  newNode;
+                _head = _tail = newNode;
             }
             else
             {
                 _tail.Next = newNode;
                 _tail = newNode;
             }
+
             _size++;
         }
 
         public bool Contains(int value)
         {
             return IndexOf(value) != -1;
-
         }
 
         public void DeleteFirst()
@@ -119,11 +119,11 @@ namespace LinkedList
             _size--;
             if (_head == _tail)
             {
-               _head = _tail = null;
+                _head = _tail = null;
             }
-            
+
             var currentNode = _head;
-            
+
             while (true)
             {
                 if (currentNode.Next.Next == null)
@@ -132,7 +132,7 @@ namespace LinkedList
                     _tail.Next = null;
                     return;
                 }
-                
+
                 currentNode = currentNode.Next;
             }
         }
@@ -158,6 +158,31 @@ namespace LinkedList
             }
 
             return list;
+        }
+
+        public void Reverse()
+        {
+            // [15 -> 10 -> 20 -> 30]
+            //  p     c     n
+            //        p     c     n
+            //              p     c     n
+            //                    p     c     n      // when current equals next loop ends
+            if (IsEmpty())
+                return;
+            
+            var previous = _head;
+            var current = _head.Next;
+            while (current != null)
+            {
+                var next = current.Next;
+                current.Next = previous;
+                previous = current;
+                current = next;
+            }
+            
+            _tail = _head;
+            _tail.Next = null;
+            _head = previous;
         }
     }
 }
