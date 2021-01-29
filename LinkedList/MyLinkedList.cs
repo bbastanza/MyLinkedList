@@ -191,7 +191,7 @@ namespace LinkedList
                 throw new InvalidOperationException("List is empty");
             
             if (k < 1 || k > _size)
-                throw new ArgumentOutOfRangeException(nameof(k), "cannot be less than 1 & <= size of list");
+                throw new ArgumentOutOfRangeException(nameof(k), "cannot be less than 1 or greater than size of list");
             
             var current = _head;
             var second = _head;
